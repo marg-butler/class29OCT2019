@@ -1,0 +1,43 @@
+---
+title: "class 29OCT2019"
+author: "Margaret Butler"
+date: "10/29/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(googlesheets4)
+library(tidyverse)
+library(tidyr)
+library(janitor)
+
+sheets_deauth()
+sampling_data <- read_sheet("1cgP-e6THVfiW5TJ95QhX3jkNxKvc8Sicp9k_BkSRd2I")
+
+```
+
+
+```{r}
+
+x <- sampling_data %>% 
+  mutate(prop_red = red/(red + white)) %>% 
+  drop_na()
+
+x %>% 
+  ggplot(aes(x = prop_red)) +
+  geom_histogram() +
+  labs(
+    title = "Proportion Red Beads",
+    x = "Proportion Red",
+    y = "Count"
+  )
+
+```
+
+```{r}
+
+yeet <- tibble(bead = c(rep("Red" = )))
+
+```
